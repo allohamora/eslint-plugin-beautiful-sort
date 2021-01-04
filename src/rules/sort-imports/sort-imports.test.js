@@ -95,6 +95,28 @@ tester.run('sort-imports', rule, {
         "import 'Test.scss';",
       ]),
       errors: 4
+    },
+    {
+      code: combineCodeArr([
+        "import 'Test.scss';",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+        "import React from 'react';",
+      ]),
+      options: [
+        {
+          order: ['special', 'default', 'none']
+        }
+      ],
+      output: combineCodeArr([
+        "import React from 'react';",
+        "import A from 'a';",
+        "import 'Test.scss';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+      ]),
+      errors: 4
     }
   ]
 })

@@ -24,6 +24,7 @@ const rule = {
             items: {
               enum: [
                 TYPES.special,
+                TYPES.namespace,
                 TYPES.default,
                 TYPES.defaultObj,
                 TYPES.obj,
@@ -88,6 +89,11 @@ const rule = {
         };
 
         const sorted = order.reduce((state, key) => [...state, ...importsState[key]], []);
+
+        if( importsState.rest.length ) {
+          sorted.push(...importsState.rest);
+        };
+
         const sourceCode = context.getSourceCode();
 
         sorted.forEach(({ node, index }, i) => {
@@ -96,7 +102,7 @@ const rule = {
           // compare objects
           if( imports[i] !== node ) {
             context.report({
-              message: `It must be ${i + 1}, but it is ${index + 1}`,
+              message: `${sourceCode.getText(node)} must be ${i + 1}, but it is ${index + 1}`,
               node,
               fix: (fixer) => fixer.replaceTextRange(targetNode.range, sourceCode.getText(node))
             });
