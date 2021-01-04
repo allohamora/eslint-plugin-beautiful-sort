@@ -2,7 +2,7 @@
 
 eslint plugin for es6 imports sort by order like eslnt/sort-imports with fix option
 
-## Working
+## Example
 
 From
 ```js
@@ -22,6 +22,9 @@ import C, {h} from 'j'; // defaultObj
 import {a,b,c} from 'a'; // obj
 import './Test.css'; // none
 ```
+
+## Requirements
+node js: v14.15.1+
 
 ## Usage
 
