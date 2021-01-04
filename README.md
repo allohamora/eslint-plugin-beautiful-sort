@@ -8,15 +8,19 @@ From
 ```js
 import './Test.css';
 import {a,b,c} from 'a';
+import C, {h} from 'j';
 import A from 'g';
+import * as Meme from 'meme';
 import React from 'react';
 ```
 To
 ```js
-import React from 'react';
-import A from 'g';
-import {a,b,c} from 'a';
-import './Test.css';
+import React from 'react'; // special
+import * as Meme from 'meme'; // namespace
+import A from 'g'; // default
+import C, {h} from 'j'; // defaultObj
+import {a,b,c} from 'a'; // obj
+import './Test.css'; // none
 ```
 
 ## Usage
@@ -31,7 +35,7 @@ import './Test.css';
   "rules": {
     "beautiful-sort/import": [2, {
       "special": ["react"], 
-      "order": ["special", "default", "defaultObj", "obj", "none"]
+      "order": ["special", "namespace", "default", "defaultObj", "obj", "none"]
     }]
   }
 }

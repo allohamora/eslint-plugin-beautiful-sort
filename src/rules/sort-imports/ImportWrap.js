@@ -1,8 +1,9 @@
 const TYPES = require('./types');
 
 const AST_TYPES = {
-  default: "ImportDefaultSpecifier",
-  obj: "ImportSpecifier"
+  default: 'ImportDefaultSpecifier',
+  obj: 'ImportSpecifier',
+  namespace: 'ImportNamespaceSpecifier',
 }
 
 class ImportWrap {
@@ -25,6 +26,9 @@ class ImportWrap {
         break;
       case this.isObj(node):
         this.type = TYPES.obj;
+        break;
+      case this.isNamespace(node):
+        this.type = TYPES.namespace;
         break;
       case this.isNone(node):
         this.type = TYPES.none;
@@ -64,6 +68,12 @@ class ImportWrap {
   };
 
   isNone = (node) => node.specifiers.length === 0;
+
+  isNamespace = (node) => {
+    if( !node.specifiers.length ) return;
+
+    return node.specifiers[0].type === AST_TYPES.namespace;
+  }
 }
 
 module.exports = ImportWrap;

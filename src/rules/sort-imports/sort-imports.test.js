@@ -80,6 +80,21 @@ tester.run('sort-imports', rule, {
         "import B, {b} from 'b';",
       ]),
       errors: 4
+    },
+    {
+      code: combineCodeArr([
+        "import 'Test.scss';",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import React from 'react';",
+      ]),
+      output: combineCodeArr([
+        "import React from 'react';",
+        "import * as Kek from 'kek';",
+        "import A from 'a';",
+        "import 'Test.scss';",
+      ]),
+      errors: 4
     }
   ]
 })

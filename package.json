@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-beautiful-sort",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "eslint plugin for import sort",
   "main": "src/index.js",
   "dependencies": {},

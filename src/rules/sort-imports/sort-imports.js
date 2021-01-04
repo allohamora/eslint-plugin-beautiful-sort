@@ -45,6 +45,7 @@ const rule = {
 
     const order = options.order ?? [
       TYPES.special,
+      TYPES.namespace,
       TYPES.default,
       TYPES.defaultObj,
       TYPES.obj,
@@ -77,7 +78,8 @@ const rule = {
             return state;
           }, {});
 
-          const test = importsState.special.sort((a, b) => {
+          // mutate importsState.special
+          importsState.special.sort((a, b) => {
             const aIndex = specialState[a.node.source.value];
             const bIndex = specialState[b.node.source.value];
 
