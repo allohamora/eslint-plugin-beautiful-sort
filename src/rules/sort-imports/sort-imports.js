@@ -1,5 +1,5 @@
 const eslint = require('eslint');
-const ImportWrap = require('./ImportWrap');
+const ImportNode = require('./ImportNode');
 const TYPES = require('./types');
 
 /**
@@ -7,11 +7,11 @@ const TYPES = require('./types');
  */
 const rule = {  
   meta: {
-    type: "layout",
-    fixable: "code",
+    type: 'layout',
+    fixable: 'code',
     schema: [
       {
-        type: "object",
+        type: 'object',
         properties: {
           special: {
             type: 'array',
@@ -54,7 +54,7 @@ const rule = {
     ];
 
     return {
-      "Program": programNode => {
+      Program: programNode => {
         const imports = programNode.body.filter(node => node.type === 'ImportDeclaration');
         
         if( imports.length === 0 ) return;
@@ -66,7 +66,7 @@ const rule = {
         }, { rest: [] });
 
         imports.forEach((node, index) => {
-          const importWrap = new ImportWrap(node, { special });
+          const importWrap = new ImportNode(node, { special });
           const stateLink = importsState[importWrap.type] ?? importsState.rest;
 
           stateLink.push({ node, index });
