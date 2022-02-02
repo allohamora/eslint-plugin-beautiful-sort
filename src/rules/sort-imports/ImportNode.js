@@ -57,7 +57,7 @@ class ImportNode {
 
   isDefaultObj = () => {
     const { specifiers } = this.node;
-    if (specifiers.length !== 2) return false;
+    if (specifiers.length < 2) return false;
   
     const isFirstDefault = specifiers[0].type === AST_TYPES.default;
     const isSecondObj = specifiers[1].type === AST_TYPES.obj;

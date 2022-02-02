@@ -40,7 +40,7 @@ tester.run('sort-imports', rule, {
         "import React from 'react';",
         "import 'Test.scss';",
         "import {c,d,f} from 'c';",
-        "import B, {b} from 'b';",
+        "import B, {b, k, g} from 'b';",
         "import A from 'a';",
       ]),
       options: [
@@ -52,7 +52,7 @@ tester.run('sort-imports', rule, {
         "import React from 'react';",
         "import ReactDOM from 'react-dom';",
         "import A from 'a';",
-        "import B, {b} from 'b';",
+        "import B, {b, k, g} from 'b';",
         "import {c,d,f} from 'c';",
         "import 'Test.scss';",
       ]),
