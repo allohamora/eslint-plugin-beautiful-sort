@@ -1,6 +1,6 @@
 # eslint-plugin-beautiful-sort
 
-eslint plugin for es6 imports sort by order like eslnt/sort-imports with fix option
+eslint plugin for imports sort by their type.
 
 ## Example
 
@@ -23,8 +23,14 @@ import {a,b,c} from 'a'; // obj
 import './Test.css'; // none
 ```
 
-## Requirements
-node js: v14.15.1+
+## Plugin tested on 
+```json
+{
+    "node": "^16.13.2",
+    "npm": "^8.1.2",
+    "eslint": "^7.32.0"
+}
+```
 
 ## Usage
 
