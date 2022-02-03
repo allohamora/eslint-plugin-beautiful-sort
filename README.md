@@ -7,8 +7,8 @@ eslint plugin for imports sort by their type
 From:
 ```js
 import './Test.css';
-import {a,b,c} from 'a';
-import C, {h} from 'j';
+import { a, b, c } from 'a';
+import C, { h } from 'j';
 import A from 'g';
 import * as Meme from 'meme';
 import React from 'react';
@@ -18,8 +18,8 @@ To:
 import React from 'react'; // special
 import * as Meme from 'meme'; // namespace
 import A from 'g'; // default
-import C, {h} from 'j'; // defaultObj
-import {a,b,c} from 'a'; // obj
+import C, { h } from 'j'; // defaultObj
+import { a, b ,c } from 'a'; // obj
 import './Test.css'; // none
 ```
 
@@ -50,4 +50,20 @@ npm i -D eslint-plugin-beautiful-sort
     }]
   }
 }
+```
+
+## API
+### Special
+special is an array of module paths or a string regexp such as ```"/^src/utils/string$"```
+### Order
+order is an array of [import types](#import-type);
+### Import type
+import type is a string that specifies one of the following imports:
+```js
+import React from 'react'; // special
+import * as Meme from 'meme'; // namespace
+import A from 'g'; // default
+import C, { h } from 'j'; // defaultObj
+import { a, b ,c } from 'a'; // obj
+import './Test.css'; // none
 ```
