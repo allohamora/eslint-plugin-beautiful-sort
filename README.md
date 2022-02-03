@@ -26,9 +26,9 @@ import './Test.css'; // none
 ## Plugin tested on 
 ```json
 {
-    "node": "^16.13.2",
-    "npm": "^8.1.2",
-    "eslint": "^8.8.0"
+  "node": "^16.13.2",
+  "npm": "^8.1.2",
+  "eslint": "^8.8.0"
 }
 ```
 
@@ -44,8 +44,8 @@ npm i -D eslint-plugin-beautiful-sort
     "beautiful-sort"
   ],
   "rules": {
-    "beautiful-sort/import": [2, {
-      "special": ["react"], 
+    "beautiful-sort/import": ["error", {
+      "special": ["react"],
       "order": ["special", "namespace", "default", "defaultObj", "obj", "none"]
     }]
   }
