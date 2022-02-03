@@ -66,7 +66,7 @@ const END_SLASH_REGEXP = /\/$/;
 
 const isRegexp = (target: string) => {
   const isStartsWithSlash = target[0] === SLASH;
-  const isEndsWithSlash = target.at(-1) === SLASH;
+  const isEndsWithSlash = target[target.length - 1] === SLASH;
 
   return isStartsWithSlash && isEndsWithSlash;
 };
