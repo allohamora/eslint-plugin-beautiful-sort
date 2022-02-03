@@ -28,7 +28,7 @@ import './Test.css'; // none
 {
     "node": "^16.13.2",
     "npm": "^8.1.2",
-    "eslint": "^7.32.0"
+    "eslint": "^8.8.0"
 }
 ```
 
