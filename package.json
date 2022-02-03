@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-beautiful-sort",
   "version": "1.0.7",
-  "description": "eslint plugin for import sort",
+  "description": "eslint plugin for imports sort by their type",
   "main": "dist/index.js",
   "type": "commonjs",
   "author": "https://github.com/Allohamora",
@@ -43,8 +43,11 @@
   },
   "keywords": [
     "eslint",
+    "plugin",
+    "sort",
     "import",
-    "import-sort"
+    "imports-sort",
+    "sort-imports"
   ],
   "repository": {
     "type": "git",
