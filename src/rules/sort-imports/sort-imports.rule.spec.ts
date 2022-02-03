@@ -1,20 +1,20 @@
-const { RuleTester } = require('eslint');
-const rule = require('./sort-imports');
+import { RuleTester } from 'eslint';
+import { sortImportsRule } from './sort-imports.rule';
 
-const tester = new RuleTester({ parserOptions: { ecmaVersion: 2020, sourceType: "module" } });
+const tester = new RuleTester({ parserOptions: { ecmaVersion: 2020, sourceType: 'module' } });
 
-const combineCodeArr = arr => arr.join('\n');
+const combineCodeArr = (arr: string[]) => arr.join('\n');
 
-tester.run('sort-imports', rule, {
+tester.run('sort-imports', sortImportsRule, {
   valid: [
     {
       code: combineCodeArr([
         "import A from 'a';",
         "import B, {b} from 'b';",
         "import {c,d,f} from 'c';",
-        "import 'Test.scss';"
-      ])
-    }
+        "import 'Test.scss';",
+      ]),
+    },
   ],
   invalid: [
     {
@@ -32,7 +32,7 @@ tester.run('sort-imports', rule, {
         "import {c,d,f} from 'c';",
         "import 'Test.scss';",
       ]),
-      errors: 4
+      errors: 4,
     },
     {
       code: combineCodeArr([
@@ -45,8 +45,8 @@ tester.run('sort-imports', rule, {
       ]),
       options: [
         {
-          special: ['react', 'react-dom']
-        }
+          special: ['react', 'react-dom'],
+        },
       ],
       output: combineCodeArr([
         "import React from 'react';",
@@ -56,7 +56,7 @@ tester.run('sort-imports', rule, {
         "import {c,d,f} from 'c';",
         "import 'Test.scss';",
       ]),
-      errors: 6
+      errors: 6,
     },
     {
       code: combineCodeArr([
@@ -69,8 +69,8 @@ tester.run('sort-imports', rule, {
       options: [
         {
           special: ['react', 'react-dom'],
-          order: ['none', 'default', 'special']
-        }
+          order: ['none', 'default', 'special'],
+        },
       ],
       output: combineCodeArr([
         "import 'Test.scss';",
@@ -79,7 +79,7 @@ tester.run('sort-imports', rule, {
         "import ReactDOM from 'react-dom';",
         "import B, {b} from 'b';",
       ]),
-      errors: 4
+      errors: 4,
     },
     {
       code: combineCodeArr([
@@ -94,7 +94,7 @@ tester.run('sort-imports', rule, {
         "import A from 'a';",
         "import 'Test.scss';",
       ]),
-      errors: 4
+      errors: 4,
     },
     {
       code: combineCodeArr([
@@ -106,8 +106,8 @@ tester.run('sort-imports', rule, {
       ]),
       options: [
         {
-          order: ['special', 'default', 'none']
-        }
+          order: ['special', 'default', 'none'],
+        },
       ],
       output: combineCodeArr([
         "import React from 'react';",
@@ -116,7 +116,7 @@ tester.run('sort-imports', rule, {
         "import * as Kek from 'kek';",
         "import * as Kek2 from 'kek2';",
       ]),
-      errors: 4
-    }
-  ]
-})
+      errors: 4,
+    },
+  ],
+});
