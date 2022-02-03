@@ -118,5 +118,32 @@ tester.run('sort-imports', sortImportsRule, {
       ]),
       errors: 4,
     },
+    {
+      code: combineCodeArr([
+        "import 'Test.scss';",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+        "import React from 'react';",
+        "import BModule from '../../../b.module';",
+        "import * as helpers from 'src/help/helpers';",
+      ]),
+      options: [
+        {
+          special: ['react', '/^src/help/', '/b.module$/'],
+          order: ['special', 'default', 'none'],
+        },
+      ],
+      output: combineCodeArr([
+        "import React from 'react';",
+        "import * as helpers from 'src/help/helpers';",
+        "import BModule from '../../../b.module';",
+        "import A from 'a';",
+        "import 'Test.scss';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+      ]),
+      errors: 7,
+    },
   ],
 });

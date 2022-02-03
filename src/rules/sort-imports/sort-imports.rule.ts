@@ -1,6 +1,13 @@
 import { Rule } from 'eslint';
 import { Options } from './sort-imports.types';
-import { createSortTable, getImports, isEmpty, getSortedImports, reportErrors } from './sort-imports.utils';
+import {
+  createSortTable,
+  getImports,
+  isEmpty,
+  getSortedImports,
+  reportErrors,
+  parseStringSpecial,
+} from './sort-imports.utils';
 import { Type } from './type.enum';
 
 export const sortImportsRule: Rule.RuleModule = {
@@ -30,9 +37,11 @@ export const sortImportsRule: Rule.RuleModule = {
   },
   create: (context) => {
     const {
-      special = ['react'],
+      special: stringSpecial = ['react'],
       order = [Type.special, Type.namespace, Type.default, Type.defaultObj, Type.obj, Type.none],
     } = (context.options[0] as Options) ?? {};
+
+    const special = parseStringSpecial(stringSpecial);
 
     return {
       Program: (program) => {

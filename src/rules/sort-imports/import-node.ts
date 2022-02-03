@@ -7,7 +7,7 @@ const OBJ_AST_TYPE = 'ImportSpecifier';
 const NAMESPACE_AST_TYPE = 'ImportNamespaceSpecifier';
 
 export interface ImportNodeParams {
-  special: string[];
+  special: RegExp[];
   sortTable: SortTable;
 }
 
@@ -19,8 +19,8 @@ export class ImportNode {
   }
 
   private getSpecialNumber(target: ImportNode) {
-    return this.params.special.findIndex((special) => {
-      return special === target.getImportPath();
+    return this.params.special.findIndex((regexp) => {
+      return regexp.test(target.getImportPath());
     });
   }
 
@@ -56,7 +56,7 @@ export class ImportNode {
   }
 
   public getImportPath() {
-    return this.node.source.value;
+    return this.node.source.value as string;
   }
 
   public getType() {
@@ -86,7 +86,7 @@ export class ImportNode {
     const { node, params } = this;
     const { special } = params;
 
-    return special.includes(node.source.value as string);
+    return special.some((regexp) => regexp.test(node.source.value as string));
   }
 
   private isDefault() {

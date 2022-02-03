@@ -59,3 +59,34 @@ export const reportErrors = (
     }
   }
 };
+
+const SLASH = '/';
+const START_SLASH_REGEXP = /^\//;
+const END_SLASH_REGEXP = /\/$/;
+
+const isRegexp = (target: string) => {
+  const isStartsWithSlash = target[0] === SLASH;
+  const isEndsWithSlash = target.at(-1) === SLASH;
+
+  return isStartsWithSlash && isEndsWithSlash;
+};
+
+const specialStringRegexpToRegexp = (specialRegexp: string) => {
+  const regexpString = specialRegexp.replace(START_SLASH_REGEXP, '').replace(END_SLASH_REGEXP, '');
+
+  return new RegExp(regexpString);
+};
+
+const specialStringToRegexp = (special: string) => {
+  return new RegExp(`^${special}$`);
+};
+
+export const parseStringSpecial = (stringSpecial: string[]) => {
+  return stringSpecial.map((string) => {
+    if (isRegexp(string)) {
+      return specialStringRegexpToRegexp(string);
+    }
+
+    return specialStringToRegexp(string);
+  });
+};
