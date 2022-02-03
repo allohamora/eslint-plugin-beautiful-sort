@@ -1,10 +1,10 @@
 # eslint-plugin-beautiful-sort
 
-eslint plugin for imports sort by their type.
+eslint plugin for imports sort by their type
 
 ## Example
 
-From
+From:
 ```js
 import './Test.css';
 import {a,b,c} from 'a';
@@ -13,7 +13,7 @@ import A from 'g';
 import * as Meme from 'meme';
 import React from 'react';
 ```
-To
+To:
 ```js
 import React from 'react'; // special
 import * as Meme from 'meme'; // namespace
@@ -34,7 +34,9 @@ import './Test.css'; // none
 
 ## Usage
 
-`npm i -D eslint-plugin-beautiful-sort`
+```bash 
+npm i -D eslint-plugin-beautiful-sort
+```
 
 ```json
 {
