@@ -7,11 +7,11 @@ eslint plugin for imports sort by their type
 From:
 
 ```js
-import './Test.css';
-import { a, b, c } from 'a';
-import C, { h } from 'j';
-import A from 'g';
-import * as Meme from 'meme';
+import './styles.css';
+import { compose, pipe, curry } from 'src/utils/fp';
+import ApiService, { Options } from './api.service';
+import Link from '../Link';
+import * as utils from 'src/utils';
 import React from 'react';
 ```
 
@@ -19,11 +19,11 @@ To:
 
 ```js
 import React from 'react'; // special
-import * as Meme from 'meme'; // namespace
-import A from 'g'; // default
-import C, { h } from 'j'; // defaultObj
-import { a, b, c } from 'a'; // obj
-import './Test.css'; // none
+import * as utils from 'src/utils'; // namespace
+import Link from '../Link'; // default
+import ApiService, { Options } from './api.service'; // defaultObj
+import { compose, pipe, curry } from 'src/utils/fp'; // obj
+import './styles.css'; // none
 ```
 
 ## Plugin tested on
@@ -73,9 +73,9 @@ import type is a string that specifies one of the following imports:
 
 ```js
 import React from 'react'; // special
-import * as Meme from 'meme'; // namespace
-import A from 'g'; // default
-import C, { h } from 'j'; // defaultObj
-import { a, b, c } from 'a'; // obj
-import './Test.css'; // none
+import * as utils from 'src/utils'; // namespace
+import Link from '../Link'; // default
+import ApiService, { Options } from './api.service'; // defaultObj
+import { compose, pipe, curry } from 'src/utils/fp'; // obj
+import './styles.css'; // none
 ```
