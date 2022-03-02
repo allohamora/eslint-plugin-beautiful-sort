@@ -33,6 +33,6 @@
       "hidden": true
     }
   ],
-  "commitUrlFormat": "https://github.com/Allohamora/eslint-plugin-beautiful-sort/commit/{{hash}}",
-  "compareUrlFormat": "https://github.com/Allohamora/eslint-plugin-beautiful-sort/compare/{{previousTag}}...{{currentTag}}"
+  "commitUrlFormat": "https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/{{previousTag}}...{{currentTag}}"
 }
