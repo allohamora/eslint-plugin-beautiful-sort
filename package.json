@@ -4,7 +4,7 @@
   "description": "eslint plugin for imports sort by their type",
   "main": "dist/index.js",
   "type": "commonjs",
-  "author": "https://github.com/Allohamora",
+  "author": "https://github.com/allohamora",
   "license": "MIT",
   "scripts": {
     "test": "jest",
@@ -51,12 +51,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Allohamora/eslint-plugin-beautiful-sort.git"
+    "url": "git+https://github.com/allohamora/eslint-plugin-beautiful-sort.git"
   },
   "bugs": {
-    "url": "https://github.com/Allohamora/eslint-plugin-beautiful-sort/issues"
+    "url": "https://github.com/allohamora/eslint-plugin-beautiful-sort/issues"
   },
-  "homepage": "https://github.com/Allohamora/eslint-plugin-beautiful-sort#readme",
+  "homepage": "https://github.com/allohamora/eslint-plugin-beautiful-sort#readme",
   "files": [
     "dist"
   ],
