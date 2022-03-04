@@ -61,7 +61,7 @@ npm i -D eslint-plugin-beautiful-sort
 
 ### Special
 
-special is an array of module paths or a string regexp such as `"/^src/utils/string$"`
+special is an array of module paths or a string regexp such as `"/^src/utils/string$/"`
 
 ### Order
 
