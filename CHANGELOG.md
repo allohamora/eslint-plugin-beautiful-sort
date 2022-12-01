@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.3...2.0.4) (2022-12-01)
+
+### Bug Fixes
+
+- audit problems ([212a23f](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/212a23fe3373a547385ec7e3fdc990bc64d7ef48))
+
 ### [2.0.3](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.2...2.0.3) (2022-03-04)
 
 ### Bug Fixes
