@@ -61,8 +61,8 @@
     "dist"
   ],
   "engines": {
-    "node": "^16.13.2",
-    "npm": "^8.1.2"
+    "node": ">=16.13.2",
+    "npm": ">=8.1.2"
   },
   "lint-staged": {
     "*.{js,json,yml,md}": "prettier --write",
