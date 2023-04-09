@@ -1,6 +1,11 @@
 # eslint-plugin-beautiful-sort
 
-eslint plugin for imports sort by their type
+[![npm](https://img.shields.io/npm/v/eslint-plugin-beautiful-sort)](https://www.npmjs.com/package/eslint-plugin-beautiful-sort)
+![build](https://github.com/allohamora/config-manager/actions/workflows/build.yml/badge.svg)
+![test](https://github.com/allohamora/config-manager/actions/workflows/test.yml/badge.svg)
+![release](https://github.com/allohamora/config-manager/actions/workflows/release.yml/badge.svg)
+
+eslint plugin to sort imports by their type
 
 ## Example
 
@@ -24,6 +29,18 @@ import Link from '../Link'; // default
 import ApiService, { Options } from './api.service'; // defaultObj
 import { compose, pipe, curry } from 'src/utils/fp'; // obj
 import './styles.css'; // none
+```
+
+Disable sorting:
+
+```js
+/* eslint-disable beautiful-sort/import */
+import './styles.css';
+import { compose, pipe, curry } from 'src/utils/fp';
+import ApiService, { Options } from './api.service';
+import Link from '../Link';
+import * as utils from 'src/utils';
+import React from 'react';
 ```
 
 ## Plugin tested on
