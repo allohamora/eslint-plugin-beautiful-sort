@@ -50,9 +50,9 @@ export const reportErrors = (
 
   if (!shouldFix) return;
 
-  const message = `Wrong order of imports. Correct order: \n${sortedImports
-    .map((node, i) => sourceCode.getText(node))
-    .join('\n')}`;
+  const message = `Replace imports to: ${sortedImports
+    .map((node) => `\`${sourceCode.getText(node).replace(';', '')}\``)
+    .join(', ')}`;
 
   const end = sortedImports.at(-1)?.loc?.end as Position;
   const start = program.loc?.start as Position;
