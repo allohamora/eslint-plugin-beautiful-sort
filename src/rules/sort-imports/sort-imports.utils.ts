@@ -1,12 +1,14 @@
-import { AST, Rule } from 'eslint';
-import { Program, ImportDeclaration } from 'estree';
+import { Rule } from 'eslint';
+import { Program, ImportDeclaration, Position } from 'estree';
 import { ImportNode, ImportNodeParams } from './import-node';
 import { Type } from './type.enum';
 
 const IMPORT_AST_TYPE = 'ImportDeclaration';
 
 export const getImports = (program: Program) => {
-  return program.body.filter((node) => node.type === IMPORT_AST_TYPE) as ImportDeclaration[];
+  return program.body.filter((node): node is ImportDeclaration => {
+    return node.type === IMPORT_AST_TYPE;
+  });
 };
 
 export const isEmpty = <T>(array: T[]) => {
@@ -37,27 +39,41 @@ export const getSortedImports = (imports: ImportDeclaration[], params: ImportNod
 
 export const reportErrors = (
   context: Rule.RuleContext,
+  program: Program,
   imports: ImportDeclaration[],
   sortedImports: ImportDeclaration[],
 ) => {
   const sourceCode = context.getSourceCode();
+  const shouldFix = sortedImports.some((node, i) => {
+    return imports[i] !== node;
+  });
 
-  for (let i = 0; i < sortedImports.length; i++) {
-    const node = sortedImports[i];
-    const finded = imports[i];
-    const inImportIndex = imports.findIndex((innerNode) => innerNode === node); // compare by object links;
+  if (!shouldFix) return;
 
-    if (finded !== node) {
-      const originalPlace = inImportIndex + 1;
-      const newPlace = i + 1;
+  const message = `Wrong order of imports. Correct order: \n${sortedImports
+    .map((node, i) => sourceCode.getText(node))
+    .join('\n')}`;
 
-      context.report({
-        message: `${sourceCode.getText(node)} must be ${newPlace}, but it is ${originalPlace}`,
-        node: node,
-        fix: (fixer) => fixer.replaceTextRange(finded.range as AST.Range, sourceCode.getText(node)),
-      });
-    }
-  }
+  const end = sortedImports.at(-1)?.loc?.end as Position;
+  const start = program.loc?.start as Position;
+
+  context.report({
+    loc: {
+      start,
+      end,
+    },
+    message,
+    fix: function* (fixer) {
+      for (let i = 0; i < sortedImports.length; i++) {
+        const node = sortedImports[i];
+        const found = imports[i];
+
+        if (found !== node) {
+          yield fixer.replaceText(found, sourceCode.getText(node));
+        }
+      }
+    },
+  });
 };
 
 const SLASH = '/';
