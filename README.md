@@ -30,9 +30,9 @@ import './styles.css'; // none
 
 ```json
 {
-  "node": "^16.13.2",
-  "npm": "^8.1.2",
-  "eslint": "^8.8.0"
+  "node": "^18.14.0",
+  "npm": "^9.3.1",
+  "eslint": "^8.38.0"
 }
 ```
 

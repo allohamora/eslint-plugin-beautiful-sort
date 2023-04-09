@@ -51,7 +51,7 @@ export const sortImportsRule: Rule.RuleModule = {
         const sortTable = createSortTable(order);
         const sortedImports = getSortedImports(imports, { special, sortTable });
 
-        reportErrors(context, imports, sortedImports);
+        reportErrors(context, program, imports, sortedImports);
       },
     };
   },

@@ -8,12 +8,85 @@ const combineCodeArr = (arr: string[]) => arr.join('\n');
 tester.run('sort-imports', sortImportsRule, {
   valid: [
     {
+      code: '',
+    },
+    {
       code: combineCodeArr([
         "import A from 'a';",
         "import B, {b} from 'b';",
         "import {c,d,f} from 'c';",
         "import 'Test.scss';",
       ]),
+    },
+    {
+      code: combineCodeArr([
+        '/* eslint-disable */',
+        "import 'Test.scss';",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+        "import React from 'react';",
+        "import BModule from '../../../b.module';",
+        "import * as helpers from 'src/help/helpers';",
+      ]),
+      options: [
+        {
+          special: ['react', '/^src/help/', '/b.module$/'],
+          order: ['special', 'default', 'none'],
+        },
+      ],
+    },
+    {
+      code: combineCodeArr([
+        '// eslint-disable-next-line',
+        "import 'Test.scss';",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+        "import React from 'react';",
+        "import BModule from '../../../b.module';",
+        "import * as helpers from 'src/help/helpers';",
+      ]),
+      options: [
+        {
+          special: ['react', '/^src/help/', '/b.module$/'],
+          order: ['special', 'default', 'none'],
+        },
+      ],
+    },
+    {
+      code: combineCodeArr([
+        "import 'Test.scss'; /* eslint-disable-line */",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+        "import React from 'react';",
+        "import BModule from '../../../b.module';",
+        "import * as helpers from 'src/help/helpers';",
+      ]),
+      options: [
+        {
+          special: ['react', '/^src/help/', '/b.module$/'],
+          order: ['special', 'default', 'none'],
+        },
+      ],
+    },
+    {
+      code: combineCodeArr([
+        "import 'Test.scss'; // eslint-disable-line",
+        "import A from 'a';",
+        "import * as Kek from 'kek';",
+        "import * as Kek2 from 'kek2';",
+        "import React from 'react';",
+        "import BModule from '../../../b.module';",
+        "import * as helpers from 'src/help/helpers';",
+      ]),
+      options: [
+        {
+          special: ['react', '/^src/help/', '/b.module$/'],
+          order: ['special', 'default', 'none'],
+        },
+      ],
     },
   ],
   invalid: [
@@ -32,7 +105,7 @@ tester.run('sort-imports', sortImportsRule, {
         "import {c,d,f} from 'c';",
         "import 'Test.scss';",
       ]),
-      errors: 4,
+      errors: 1,
     },
     {
       code: combineCodeArr([
@@ -56,7 +129,7 @@ tester.run('sort-imports', sortImportsRule, {
         "import {c,d,f} from 'c';",
         "import 'Test.scss';",
       ]),
-      errors: 6,
+      errors: 1,
     },
     {
       code: combineCodeArr([
@@ -79,7 +152,7 @@ tester.run('sort-imports', sortImportsRule, {
         "import ReactDOM from 'react-dom';",
         "import B, {b} from 'b';",
       ]),
-      errors: 4,
+      errors: 1,
     },
     {
       code: combineCodeArr([
@@ -94,7 +167,7 @@ tester.run('sort-imports', sortImportsRule, {
         "import A from 'a';",
         "import 'Test.scss';",
       ]),
-      errors: 4,
+      errors: 1,
     },
     {
       code: combineCodeArr([
@@ -116,7 +189,7 @@ tester.run('sort-imports', sortImportsRule, {
         "import * as Kek from 'kek';",
         "import * as Kek2 from 'kek2';",
       ]),
-      errors: 4,
+      errors: 1,
     },
     {
       code: combineCodeArr([
@@ -143,7 +216,7 @@ tester.run('sort-imports', sortImportsRule, {
         "import * as Kek from 'kek';",
         "import * as Kek2 from 'kek2';",
       ]),
-      errors: 7,
+      errors: 1,
     },
   ],
 });
