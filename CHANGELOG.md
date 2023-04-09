@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.4...3.0.0) (2023-04-09)
+
+### Features
+
+- add eslint-disable handling ([2132afe](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/2132afea99cc16fb87952576f4b4f3591bccceb2))
+- bump dependencies ([999da65](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/999da65cf9b38cf0b3eca692d92bdb42cd27e36b))
+- improve error message ([dd24831](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/dd248315f79af4b6f16f35495fc31feac35cd9f3))
+
 ### [2.0.4](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.3...2.0.4) (2022-12-01)
 
 ### Bug Fixes
