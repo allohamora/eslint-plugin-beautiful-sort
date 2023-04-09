@@ -26,6 +26,18 @@ import { compose, pipe, curry } from 'src/utils/fp'; // obj
 import './styles.css'; // none
 ```
 
+Disable sorting:
+
+```js
+/* eslint-disable beautiful-sort/import */
+import './styles.css';
+import { compose, pipe, curry } from 'src/utils/fp';
+import ApiService, { Options } from './api.service';
+import Link from '../Link';
+import * as utils from 'src/utils';
+import React from 'react';
+```
+
 ## Plugin tested on
 
 ```json
