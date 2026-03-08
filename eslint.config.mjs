@@ -3,12 +3,14 @@ import globals from 'globals';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import eslintPlugin from 'eslint-plugin-eslint-plugin';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   eslintPluginPrettierRecommended,
+  eslintPlugin.configs.recommended,
   { ignores: ['node_modules', 'dist'] },
   {
     files: ['**/*.{ts,tsx}'],
