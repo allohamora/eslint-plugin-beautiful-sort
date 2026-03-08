@@ -45,9 +45,9 @@ import React from 'react';
 
 ## Requirements
 
-- Node.js >= 24.13.0
-- npm >= 11.6.2
-- ESLint >= 10.0.0
+- Node.js >= 18.18.0
+- npm >= 9.0.0
+- ESLint >= 9.0.0
 
 ## Usage
 
