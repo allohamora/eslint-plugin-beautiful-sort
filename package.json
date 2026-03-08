@@ -62,7 +62,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "eslint": ">=9.0.0"
+    "eslint": ">=10.0.0"
   },
   "engines": {
     "node": ">=v24.13.0",

@@ -43,6 +43,12 @@ import * as utils from 'src/utils';
 import React from 'react';
 ```
 
+## Requirements
+
+- Node.js >= 24.13.0
+- npm >= 11.6.2
+- ESLint >= 10.0.0
+
 ## Usage
 
 ```bash
