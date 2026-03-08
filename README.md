@@ -43,35 +43,43 @@ import * as utils from 'src/utils';
 import React from 'react';
 ```
 
-## Plugin tested on
-
-```json
-{
-  "node": "^18.14.0",
-  "npm": "^9.3.1",
-  "eslint": "^8.38.0"
-}
-```
-
 ## Usage
 
 ```bash
 npm i -D eslint-plugin-beautiful-sort
 ```
 
-```json
-{
-  "plugins": ["beautiful-sort"],
-  "rules": {
-    "beautiful-sort/import": [
-      "error",
-      {
-        "special": ["react"],
-        "order": ["special", "namespace", "default", "defaultObj", "obj", "none"]
-      }
-    ]
-  }
-}
+### Recommended config
+
+```js
+// eslint.config.js
+import beautifulSort from 'eslint-plugin-beautiful-sort';
+
+export default [beautifulSort.configs.recommended];
+```
+
+### Custom config
+
+```js
+// eslint.config.js
+import beautifulSort from 'eslint-plugin-beautiful-sort';
+
+export default [
+  {
+    plugins: {
+      'beautiful-sort': beautifulSort,
+    },
+    rules: {
+      'beautiful-sort/import': [
+        'error',
+        {
+          special: ['react'],
+          order: ['special', 'namespace', 'default', 'defaultObj', 'obj', 'none'],
+        },
+      ],
+    },
+  },
+];
 ```
 
 ## API
