@@ -1,6 +1,7 @@
 name: test
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "**"
@@ -8,21 +9,26 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node: ["16", "18"]
-    name: node ${{ matrix.node }}
+        node-version: [18.18.0, 24.13.0]
+
     env:
       CI: true
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install ${{ matrix.node }}  node
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ matrix.node-version }}
           cache: "npm"
+
       - name: Install dependencies
-        run: npm i
+        run: npm ci
+
       - name: Run tests
         run: npm run test
