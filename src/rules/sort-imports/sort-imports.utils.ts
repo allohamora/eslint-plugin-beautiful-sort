@@ -51,8 +51,8 @@ export const reportErrors = (
 
   const importsData = sortedImports.map((node) => `\`${sourceCode.getText(node).replace(';', '')}\``).join(', ');
 
-  const end = sortedImports.at(-1)?.loc?.end as Position;
   const start = imports[0].loc?.start as Position;
+  const end = imports.at(-1)?.loc?.end as Position;
 
   context.report({
     loc: {
