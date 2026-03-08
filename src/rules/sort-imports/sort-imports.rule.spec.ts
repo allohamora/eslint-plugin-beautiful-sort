@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint';
 import { sortImportsRule } from './sort-imports.rule';
 
-const tester = new RuleTester({ parserOptions: { ecmaVersion: 2020, sourceType: 'module' } });
+const tester = new RuleTester({ languageOptions: { ecmaVersion: 2020, sourceType: 'module' } });
 
 const combineCodeArr = (arr: string[]) => arr.join('\n');
 

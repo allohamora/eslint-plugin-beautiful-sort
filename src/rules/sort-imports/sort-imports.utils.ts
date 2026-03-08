@@ -39,11 +39,10 @@ export const getSortedImports = (imports: ImportDeclaration[], params: ImportNod
 
 export const reportErrors = (
   context: Rule.RuleContext,
-  program: Program,
   imports: ImportDeclaration[],
   sortedImports: ImportDeclaration[],
 ) => {
-  const sourceCode = context.getSourceCode();
+  const sourceCode = context.sourceCode;
   const shouldFix = sortedImports.some((node, i) => {
     return imports[i] !== node;
   });
@@ -55,7 +54,7 @@ export const reportErrors = (
     .join(', ')}`;
 
   const end = sortedImports.at(-1)?.loc?.end as Position;
-  const start = program.loc?.start as Position;
+  const start = imports[0].loc?.start as Position;
 
   context.report({
     loc: {
@@ -63,7 +62,7 @@ export const reportErrors = (
       end,
     },
     message,
-    fix: function* (fixer) {
+    *fix(fixer) {
       for (let i = 0; i < sortedImports.length; i++) {
         const node = sortedImports[i];
         const found = imports[i];
