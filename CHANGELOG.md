@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/4.0.0...4.0.1) (2026-03-08)
+
+### Features
+
+- add correct github badges to README.md ([ecb90ce](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/ecb90ce9bd944de01f8e22fe42daac72db673b78))
+
 ## [4.0.0](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/3.0.1...4.0.0) (2026-03-08)
 
 ### Features
