@@ -14,18 +14,24 @@ export const sortImportsRule: Rule.RuleModule = {
   meta: {
     type: 'layout',
     fixable: 'code',
+    messages: {
+      sort: 'Replace imports to: {{imports}}',
+    },
     schema: [
       {
         type: 'object',
+        description: 'Sort imports options',
         properties: {
           special: {
             type: 'array',
+            description: 'List of special import patterns (supports regex strings)',
             items: {
               type: 'string',
             },
           },
           order: {
             type: 'array',
+            description: 'Order of import types',
             items: {
               enum: [Type.special, Type.namespace, Type.default, Type.defaultObj, Type.obj, Type.none],
             },
@@ -34,12 +40,15 @@ export const sortImportsRule: Rule.RuleModule = {
         additionalProperties: false,
       },
     ],
+    defaultOptions: [
+      {
+        special: ['react'],
+        order: [Type.special, Type.namespace, Type.default, Type.defaultObj, Type.obj, Type.none],
+      },
+    ],
   },
   create: (context) => {
-    const {
-      special: stringSpecial = ['react'],
-      order = [Type.special, Type.namespace, Type.default, Type.defaultObj, Type.obj, Type.none],
-    } = (context.options[0] as Options) ?? {};
+    const { special: stringSpecial = [], order = [] } = context.options[0] as Options;
 
     const special = parseStringSpecial(stringSpecial);
 

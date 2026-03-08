@@ -49,9 +49,7 @@ export const reportErrors = (
 
   if (!shouldFix) return;
 
-  const message = `Replace imports to: ${sortedImports
-    .map((node) => `\`${sourceCode.getText(node).replace(';', '')}\``)
-    .join(', ')}`;
+  const importsData = sortedImports.map((node) => `\`${sourceCode.getText(node).replace(';', '')}\``).join(', ');
 
   const end = sortedImports.at(-1)?.loc?.end as Position;
   const start = imports[0].loc?.start as Position;
@@ -61,7 +59,8 @@ export const reportErrors = (
       start,
       end,
     },
-    message,
+    messageId: 'sort',
+    data: { imports: importsData },
     *fix(fixer) {
       for (let i = 0; i < sortedImports.length; i++) {
         const node = sortedImports[i];
