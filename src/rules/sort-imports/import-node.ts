@@ -14,7 +14,10 @@ export interface ImportNodeParams {
 export class ImportNode {
   private type: Type | null = null;
 
-  constructor(private node: ImportDeclaration, private params: ImportNodeParams) {
+  constructor(
+    private node: ImportDeclaration,
+    private params: ImportNodeParams,
+  ) {
     this.type = this.calculateType();
   }
 

@@ -1,22 +1,49 @@
 name: release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "*.*.*"
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    env:
+      CI: true
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+
       - name: Get release notes from CHANGELOG.md
-        uses: yashanand1910/standard-release-notes@v1.2.1
+        uses: yashanand1910/standard-release-notes@v1.5.0
         id: get_release_notes
         with:
           version: ${{ github.ref }}
+
       - name: Release to github
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           body: ${{ steps.get_release_notes.outputs.release_notes }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.13.0"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        uses: JS-DevTools/npm-publish@v4
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
