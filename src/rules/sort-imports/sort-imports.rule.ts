@@ -10,6 +10,11 @@ import {
 } from './sort-imports.utils';
 import { Type } from './type.enum';
 
+const defaultOptions = {
+  special: ['react'],
+  order: [Type.special, Type.namespace, Type.default, Type.defaultObj, Type.obj, Type.none],
+};
+
 export const sortImportsRule: Rule.RuleModule = {
   meta: {
     type: 'layout',
@@ -40,15 +45,11 @@ export const sortImportsRule: Rule.RuleModule = {
         additionalProperties: false,
       },
     ],
-    defaultOptions: [
-      {
-        special: ['react'],
-        order: [Type.special, Type.namespace, Type.default, Type.defaultObj, Type.obj, Type.none],
-      },
-    ],
+    defaultOptions: [defaultOptions],
   },
   create: (context) => {
-    const { special: stringSpecial = [], order = [] } = context.options[0] as Options;
+    const { special: stringSpecial = defaultOptions.special, order = defaultOptions.order } =
+      (context.options[0] as Options) ?? {};
 
     const special = parseStringSpecial(stringSpecial);
 
