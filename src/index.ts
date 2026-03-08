@@ -1,13 +1,13 @@
 import { ESLint } from 'eslint';
 import { sortImportsRule } from './rules/sort-imports/sort-imports.rule';
 
-const plugin: ESLint.Plugin = {
+const plugin = {
   rules: {
     import: sortImportsRule,
   },
-};
+} satisfies ESLint.Plugin;
 
-plugin.configs = {
+const configs = {
   recommended: {
     plugins: {
       'beautiful-sort': plugin,
@@ -16,6 +16,9 @@ plugin.configs = {
       'beautiful-sort/import': 'error',
     },
   },
-};
+} satisfies ESLint.Plugin['configs'];
 
-export = plugin;
+export = {
+  ...plugin,
+  configs,
+} satisfies ESLint.Plugin;
