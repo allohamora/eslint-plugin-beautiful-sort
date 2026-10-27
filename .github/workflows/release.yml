@@ -2,48 +2,110 @@ name: release
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - "*.*.*"
+    inputs:
+      version:
+        description: Version (e.g. 1.2.3). Leave empty to auto-calculate
+        required: false
+        type: string
 
-permissions:
-  contents: write
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
-
-    env:
-      CI: true
-
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
     steps:
+      - name: Restrict to default branch
+        if: github.ref_name != github.event.repository.default_branch
+        run: |-
+          echo "Error: releases can only be run from the default branch '${{ github.event.repository.default_branch }}' (got '${{ github.ref_name }}')."
+          exit 1
+
       - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Get release notes from CHANGELOG.md
-        uses: yashanand1910/standard-release-notes@v1.5.0
-        id: get_release_notes
+        uses: actions/checkout@v7
         with:
-          version: ${{ github.ref }}
+          fetch-depth: 0
+          fetch-tags: true
 
-      - name: Release to github
-        uses: softprops/action-gh-release@v2
+      - name: Install node
+        uses: actions/setup-node@v7
         with:
-          body: ${{ steps.get_release_notes.outputs.release_notes }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: "24.13.0"
-          cache: "npm"
+          node-version-file: .nvmrc
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Validate version
+        if: inputs.version != ''
+        run: |-
+          if ! echo "${{ inputs.version }}" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Error: version must be in X.Y.Z format (e.g. 1.2.3), got: ${{ inputs.version }}"
+            exit 1
+          fi
+          if git tag -l "${{ inputs.version }}" | grep -q .; then
+            echo "Error: tag ${{ inputs.version }} already exists"
+            exit 1
+          fi
 
-      - name: Publish to npm
-        uses: JS-DevTools/npm-publish@v4
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Get version
+        id: version
+        run: |-
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=$(npx --no-install git-cliff --bumped-version --unreleased | sed 's/^v//')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update changelog
+        run: |-
+          touch CHANGELOG.md
+          npx --no-install git-cliff --tag ${{ steps.version.outputs.version }} --unreleased --prepend CHANGELOG.md
+
+      - name: Configure git
+        run: |-
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Bump version in package.json
+        run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version --workspaces --include-workspace-root
+
+      - name: Commit and tag
+        run: |-
+          git add .
+          git commit -m 'chore: release ${{ steps.version.outputs.version }}'
+          git tag ${{ steps.version.outputs.version }}
+          git push origin HEAD:${{ github.ref_name }}
+          git push origin ${{ steps.version.outputs.version }}
+
+      - name: Generate release notes
+        env:
+          REMOVE_TITLE: "true"
+        run: npx --no-install git-cliff --latest --strip header -o release-notes.md
+
+      - name: Limit release notes size
+        run: |-
+          MAX_CHARS=125000
+          CHARS=$(wc -m < release-notes.md | tr -d ' ')
+          if [ "$CHARS" -gt "$MAX_CHARS" ]; then
+            echo "Release notes are too large ($CHARS characters, max $MAX_CHARS). Linking to CHANGELOG.md instead."
+            echo "Release notes are too large to display here. See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/${{ steps.version.outputs.version }}/CHANGELOG.md) for the full changelog." > release-notes.md
+          fi
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |-
+          gh release create ${{ steps.version.outputs.version }} \
+            --title "${{ steps.version.outputs.version }}" \
+            --notes-file release-notes.md
+
+      - name: Trigger publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --ref ${{ steps.version.outputs.version }}

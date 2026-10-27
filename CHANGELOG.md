@@ -1,8 +1,9 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### [4.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/4.0.0...4.0.1) (2026-03-08)
+## [4.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/4.0.0...4.0.1) (2026-03-08)
 
 ### Features
 
@@ -15,7 +16,7 @@ All notable changes to this project will be documented in this file. See [standa
 - add recommended config ([48bedf6](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/48bedf6e899a99a0d70537ec6d32402b4a9deff1))
 - update implementation to eslint 10 ([a3efcdc](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/a3efcdcd96da4da64d6095dd9144ae962e16f006))
 
-### [3.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/3.0.0...3.0.1) (2023-04-09)
+## [3.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/3.0.0...3.0.1) (2023-04-09)
 
 ### Features
 
@@ -30,25 +31,25 @@ All notable changes to this project will be documented in this file. See [standa
 - bump dependencies ([999da65](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/999da65cf9b38cf0b3eca692d92bdb42cd27e36b))
 - improve error message ([dd24831](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/dd248315f79af4b6f16f35495fc31feac35cd9f3))
 
-### [2.0.4](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.3...2.0.4) (2022-12-01)
+## [2.0.4](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.3...2.0.4) (2022-12-01)
 
 ### Bug Fixes
 
 - audit problems ([212a23f](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/212a23fe3373a547385ec7e3fdc990bc64d7ef48))
 
-### [2.0.3](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.2...2.0.3) (2022-03-04)
+## [2.0.3](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.2...2.0.3) (2022-03-04)
 
 ### Bug Fixes
 
 - fix typo in README ([048e0c1](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/048e0c11f5ca4c437db6d748b5043a6a0e0fdabd))
 
-### [2.0.2](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.1...2.0.2) (2022-03-02)
+## [2.0.2](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.1...2.0.2) (2022-03-02)
 
 ### Bug Fixes
 
 - fix author links ([6315b3d](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/6315b3d1ad063fc8b405b109ad1afdf5a5345f9c))
 
-### [2.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.0...2.0.1) (2022-02-04)
+## [2.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/2.0.0...2.0.1) (2022-02-04)
 
 ### Features
 
@@ -73,7 +74,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 - fix at is not a function ([f168b46](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/f168b46088bc3da1f3aad8841b302edf72cb004d))
 
-### [1.0.7](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/v1.0.2...v1.0.7) (2022-02-02)
+## [1.0.7](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/v1.0.2...v1.0.7) (2022-02-02)
 
 ### Bug Fixes
 

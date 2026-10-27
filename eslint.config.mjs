@@ -26,5 +26,5 @@ export default defineConfig(
       '@typescript-eslint/no-misused-promises': 'warn',
       '@typescript-eslint/no-deprecated': 'error',
     },
-  }
+  },
 );
