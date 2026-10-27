@@ -10,7 +10,7 @@
     "test": "jest",
     "build": "rimraf dist && tsc --project tsconfig.build.json",
     "prepare": "husky",
-    "format": "prettier .",
+    "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
