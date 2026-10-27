@@ -62,7 +62,16 @@
     "dist"
   ],
   "peerDependencies": {
-    "eslint": ">=9.0.0"
+    "eslint": "^9.0.0 || ^10.0.0",
+    "oxlint": "^1.35.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "oxlint": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=18.18.0",
