@@ -49,7 +49,7 @@ commit_parsers = [
     { message = "^style", group = "<!-- 06 -->Styles" },
     { message = "^test", group = "<!-- 07 -->Tests" },
     { message = "^docs", group = "<!-- 08 -->Documentation" },
-    { message = "^chore: release v\\d+\\.\\d+\\.\\d+", skip = true },
+    { message = "^chore: release v?\\d+\\.\\d+\\.\\d+", skip = true },
     { message = "^Merge pull request", skip = true },
     { message = "^Merge branch", skip = true },
     { message = "^Merge remote-tracking branch", skip = true },
