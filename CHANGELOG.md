@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/4.0.1...4.1.0) (2026-10-27)
+
+### Features
+
+- Add optional eslint and oxlint peer dependencies ([7d0e35e](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/7d0e35eb84155db61fe45528dff47895a04d095b))
+
+### Bug Fixes
+
+- Set oxlint peer dependency minimum to 1.35.0 ([b4e6234](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/b4e62345a87e3313c398c8dd190f3fcc3af7393d))
+
+### Continuous Integration
+
+- Add check workflow ([589c830](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/589c830d6fec555e62ba6f9a0a4b3769b3f57c3f))
+- Add set-pr-title workflow ([533e16f](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/533e16f4f563d9ac946df1b7fc6df25f964506d0))
+- Add test workflow ([21c0590](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/21c0590deec6a322bb78ab396ddfa9eaa517442c))
+- Use unprefixed tags in release workflow ([5f6022e](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/5f6022e45eb11dfd6389e24ed56ccf6867cc2a17))
+- Make format script check formatting ([ae5607e](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/ae5607ec5d7dbdcdb4ad8188867b4be89ffd43e6))
+
+### Miscellaneous Chores
+
+- Apply npm audit fix ([1545a01](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/1545a01a570f68bbefa6908416ad0ea4173a49ab))
+- Add .editorconfig ([fc0fcd8](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/fc0fcd8aaaabc184d0870a2213f3e9a05decd1b9))
+- Add .temp ([68101cd](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/68101cd6ba5f21ff9dbc51b1c786ac7f2fde8eba))
+- Add release and publish workflow ([99b34f8](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/99b34f8e3248a14bc5dd63cdea3eb4ef3386b459))
+- Add dependabot ([88a0b0b](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/88a0b0b298e187388e61810ce736a4342b022cc1))
+- Add .npmrc ([62529f7](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/62529f7488cd89655962fe7be4812cb5068eacdd))
+- Add .nvmrc ([9feedde](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/9feedde8b3aee345340675712db69b0b80c08614))
+- Remove build workflow ([76e7d30](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/76e7d30fa82dd365dc7bdf0a876ff537afceca28))
+- Remove standard-version ([51ddf79](https://github.com/allohamora/eslint-plugin-beautiful-sort/commit/51ddf79d68c09ac621dbd4c35ccf5b19737c84f0))
+
 ## [4.0.1](https://github.com/allohamora/eslint-plugin-beautiful-sort/compare/4.0.0...4.0.1) (2026-03-08)
 
 ### Features
